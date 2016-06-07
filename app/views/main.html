@@ -1,1 +1,49 @@
-<p>This is the main view.</p>
+<div ng-class="['alert', 'text-center', {'alert-success': success, 'alert-danger': !success}]" ng-show="message" role="alert">{{message}}</div>
+<form name="importForm" ng-submit="import()" novalidate>
+  <div class="form-group">
+    <label for="id">Application ID</label>
+    <input 
+      ng-class="{'has-error' : importForm.id.$invalid}"
+      name="id" 
+      type="text" 
+      class="form-control" 
+      ng-model="appId" 
+      placeholder="ID" 
+      required />
+  </div>
+  <div class="form-group">
+    <label for="rest">REST API Key</label>
+    <input 
+      name="rest" 
+      type="text"
+      class="form-control" 
+      ng-model="restKey" 
+      placeholder="Key" 
+      />
+      <span class="small">Not needed if running your own Parse server.</span>
+  </div>
+  <div class="form-group">
+    <label for="endpoint">Class</label>
+    <input 
+      ng-class="{'has-error' : importForm.endpoint.$invalid}"
+      name="class" 
+      type="text" 
+      class="form-control" 
+      ng-model="class" 
+      placeholder="/1/classes/GameScore" 
+      required 
+      />
+  </div>  
+  <div class="form-group">
+    <label for="file">JSON File</label>
+    <input ng-class="{'has-error' : importForm.fileField.$invalid}"
+      name="fileField" 
+      type="file" 
+      ng-model="fileField" 
+      valid-file 
+      required/>
+  </div>
+  <button type="submit" class="btn btn-primary" ng-disabled="importForm.$invalid">Import</button>
+</form>
+<br />
+<br />
