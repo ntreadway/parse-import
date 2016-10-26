@@ -16,7 +16,7 @@ angular.module('parseImportApp')
         return;
       } else {
         // post file data to app
-        // Chunk is need for the Parse batch limit of 50
+        // Chunk is needed for the Parse batch limit of 50
         var object = {}
           , chunked;
         HTTP_HEADERS.set({
