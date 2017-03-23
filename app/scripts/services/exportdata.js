@@ -11,15 +11,13 @@ angular.module('parseImportApp')
   .factory('ExportData', function ($resource, HTTP_HEADERS) {
     return {
       create: function (data) {
-        //console.log("data: ", data)
-        //PARSE_API_ENDPOINT = data.endpoint;
         var obj = {};
         obj.requests = data.requests;
         console.log(obj)
         return this.post().postJSON(obj);
       }
       , post: function () {
-        var resource = $resource('https://api.parse.com/1/batch', {}, {
+        var resource = $resource('https://api.xportforwarding.com/parse/batch', {}, {
           postJSON: {
             method: 'POST'
             , headers: HTTP_HEADERS.get(),
