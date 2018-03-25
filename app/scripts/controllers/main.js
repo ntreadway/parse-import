@@ -25,18 +25,18 @@ angular.module('parseImportApp')
           , endpoint: $scope.endpoint
         });
         chunked = _.chunk($scope.fileread, 50);
-
+        console.log(chunked.length)
         _.forEach(chunked, function (file) {
           object.requests = [];
-          _.forEach(file, function (item) {
+          _.forEach(file, function (item, i) {
+            var id = item.objectId
+            var obj = _.omit(item, 'objectId');
             var temp = {
                 method: 'POST'
                 , path: $scope.class
-                , body: item
+                , body: obj
               }
-              //          if (object.requests.length < 50) {
             object.requests.push(temp);
-            //        }
           });
 
           ExportData.create(object).$promise.then(function (result) {

@@ -22,7 +22,7 @@ angular.module('parseImportApp')
       get: function() {
         return {
           'X-Parse-Application-Id': appId,
-          'X-Parse-REST-API-Key': restKey,
+          // 'X-Parse-REST-API-Key': restKey,
           'Content-Type': 'application/json'
         }
       }
